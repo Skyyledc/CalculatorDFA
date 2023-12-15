@@ -23,7 +23,7 @@
 - Python 3.x
 - Tkinter library
 
-### Installation
+## Installation
 
 Clone the repository:
 ```bash
@@ -38,12 +38,12 @@ Install dependencies:
 pip install tkintertable
 ```
 
-### Usage
+## Usage
 ```bash
 python Calculator.py
 ```
 
-### Screenshots
+## Screenshots
 
 - DFA with end states being operand and close parenthesis (DFA with No Negative integer support)
 ![image](https://github.com/Skyyledc/CalculatorDFA/assets/123300731/b34fa3a2-5779-4a3c-9d5d-e668854f4aad)
@@ -52,7 +52,7 @@ python Calculator.py
 
 - Basic History Screen
 
-### Acknowledgements
+## Acknowledgements
 [Tkinter library](https://docs.python.org/3/library/tkinter.html)
 [Fractions module](https://docs.python.org/3/library/fractions.html)
 [Python Standard Library](https://docs.python.org/3/library/)
