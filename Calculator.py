@@ -27,7 +27,7 @@ class CalculatorApp:
             width=16,
             justify="right",
         )
-        entry.grid(row=0, column=0, columnspan=4, sticky="nsew", ipadx=25, ipady=15)
+        entry.grid(row=0, column=0, columnspan=4, sticky="nsew", ipadx=15, ipady=25)
         entry.configure(readonlybackground="#2C2C2C", fg="white")
         entry.config(state="readonly")
         entry.bind("<Key>", self.handle_keypress)
@@ -70,9 +70,9 @@ class CalculatorApp:
             tk.Button(
                 master,
                 text=button_text,
-                padx=20,
-                pady=20,
-                font=("Helvetica", 14),
+                padx=15,
+                pady=15,
+                font=("Helvetica", 16),
                 command=lambda b=button_text: self.button_click(b),
                 bg=color if color else "#2C2C2C",
                 fg="white",
