@@ -142,7 +142,12 @@ class CalculatorApp:
                 ".": "decimal",
             },
             "operator": {"0-9": "operand", "(": "open_paren"},
-            "open_paren": {"0-9": "operand", "(": "open_paren", ".": "operand"},
+            "open_paren": {
+                "0-9": "operand",
+                "(": "open_paren",
+                ".": "operand",
+                "-": "negative",
+            },
             "close_paren": {
                 "+": "operator",
                 "-": "operator",
