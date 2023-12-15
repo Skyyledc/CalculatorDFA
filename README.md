@@ -53,8 +53,8 @@ python Calculator.py
 - Basic History Screen
 
 ## Acknowledgements
-[Tkinter library](https://docs.python.org/3/library/tkinter.html)
-[Fractions module](https://docs.python.org/3/library/fractions.html)
-[Python Standard Library](https://docs.python.org/3/library/)
+- [Tkinter library](https://docs.python.org/3/library/tkinter.html)
+- [Fractions module](https://docs.python.org/3/library/fractions.html)
+- [Python Standard Library](https://docs.python.org/3/library/)
 
 
