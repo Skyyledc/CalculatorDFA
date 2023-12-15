@@ -1,10 +1,12 @@
 ## `@Skyyledc/DFA_Calculator`
-🤖 Calculator with Syntax Check through DFA following PEMDAS Operation &OR Rules
+📱 Calculator with Syntax Check through DFA following PEMDAS Operation &OR Rules
 
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- -[Usage](#usage)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [Acknowledgement](#acknowledgement)
 
 ## Features
 
@@ -50,7 +52,7 @@ python Calculator.py
 
 - Basic History Screen
 
-### Sources Used
+### Acknowledgements
 [Tkinter library](https://docs.python.org/3/library/tkinter.html)
 [Fractions module](https://docs.python.org/3/library/fractions.html)
 [Python Standard Library](https://docs.python.org/3/library/)
