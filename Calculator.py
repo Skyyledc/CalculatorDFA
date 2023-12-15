@@ -130,7 +130,7 @@ class CalculatorApp:
 
     def check_syntax(self):
         dfa = {
-            "start": {"0-9": "operand", "(": "open_paren"},
+            "start": {"0-9": "operand", "(": "open_paren", "-": "negative"},
             "operand": {
                 "0-9": "operand",
                 "+": "operator",
@@ -151,14 +151,21 @@ class CalculatorApp:
                 "^": "operator",
                 ")": "close_paren",
             },
-            "exponent": {"0-9": "operand", "(": "open_paren", "-": "operand"},
+            "exponent": {
+                "0-9": "operand",
+                "(": "open_paren",
+                "-": "operand",
+                "-": "negative",
+            },
             "decimal": {"0-9": "operand"},
+            "negative": {"0-9": "operand", "(": "open_paren", ".": "decimal"},
+            "negative_start": {"0-9": "operand", ".": "decimal"},
         }
 
         stack = []
         current_state = "start"
 
-        for symbol in self.expression.get():
+        for i, symbol in enumerate(self.expression.get()):
             symbol_type = self.get_symbol_type(symbol)
             current_state = dfa[current_state].get(symbol_type)
 
@@ -170,8 +177,12 @@ class CalculatorApp:
             elif symbol == ")":
                 if stack.pop() != "(":
                     return False
+            if current_state == "negative_start" and i > 0:
+                return False
 
-        return current_state in {"operand", "close_paren"} and not stack
+        return (
+            current_state in {"operand", "close_paren", "negative_start"} and not stack
+        )
 
     @staticmethod
     def get_symbol_type(symbol):
@@ -181,6 +192,8 @@ class CalculatorApp:
             return "^"
         elif symbol == ".":
             return "."
+        elif symbol == "-":
+            return "-"
 
         else:
             return symbol
