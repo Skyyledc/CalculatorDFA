@@ -1,16 +1,44 @@
 ## `@Skyyledc/DFA_Calculator`
 🤖 Calculator with Syntax Check through DFA following PEMDAS Operation &OR Rules
 
+- [Features](#features)
+- [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- 
+
+## Features
+
+- Addition
+- Subtraction
+- Multiplication
+- Division
+- Exponentiation
+- Decimal to Fraction Conversion
+- History of Calculations
+
+## Prerequisites
+
+- Python 3.x
+- Tkinter library
 
 ### Installation
+
+Clone the repository:
+```bash
+git clone https://github.com/your-username/calculator-app.git
+```
+Navigate to the project directory:
+```bash
+cd ~./DFA_Calculator
+```
+Install dependencies:
 ```bash
 pip install tkintertable
-python Calculator.py
 ```
 
-
+###Usage
+```bash
+python Calculator.py
+```
 
 
 
