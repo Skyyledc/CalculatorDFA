@@ -6,7 +6,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Screenshots](#screenshots)
-- [Acknowledgement](#acknowledgement)
+- [Acknowledgement](#acknowledgements)
 
 ## Features
 
