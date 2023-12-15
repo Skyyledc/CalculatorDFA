@@ -1,5 +1,8 @@
 ## `@Skyyledc/DFA_Calculator`
-<h3>🤖 Calculator with Syntax Check through DFA following PEMDAS Operation &OR Rules</h3>
+🤖 Calculator with Syntax Check through DFA following PEMDAS Operation &OR Rules
+
+- [Installation](#installation)
+- 
 
 ### Installation
 ```bash
@@ -7,8 +10,7 @@ pip install tkintertable
 python Calculator.py
 ```
 
-- [Installation](#installation)
-- 
+
 
 
 
