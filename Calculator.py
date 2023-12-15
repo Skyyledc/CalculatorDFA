@@ -3,7 +3,7 @@
 ## Run: python Calculator.py
 
 import tkinter as tk
-
+import re
 from fractions import Fraction
 
 
@@ -14,6 +14,9 @@ class CalculatorApp:
         self.master.resizable(False, False)
         self.expression = tk.StringVar()
         self.to_fraction = False
+        self.history_window_open = False
+        self.history = []
+        self.runtime_history = []
 
         entry = tk.Entry(
             master,
@@ -21,12 +24,13 @@ class CalculatorApp:
             font=("Helvetica", 24),
             bd=0,
             insertwidth=12,
-            width=14,
+            width=16,
             justify="right",
         )
-        entry.grid(row=0, column=0, columnspan=4, sticky="nsew", ipadx=10, ipady=10)
+        entry.grid(row=0, column=0, columnspan=4, sticky="nsew", ipadx=25, ipady=15)
         entry.configure(readonlybackground="#2C2C2C", fg="white")
         entry.config(state="readonly")
+        entry.bind("<Key>", self.handle_keypress)
 
         buttons = [
             ("AC", 2, "#A7A7A7", "#BBBBBB"),
@@ -70,7 +74,7 @@ class CalculatorApp:
                 pady=20,
                 font=("Helvetica", 14),
                 command=lambda b=button_text: self.button_click(b),
-                bg=color if color else "#3498db",
+                bg=color if color else "#2C2C2C",
                 fg="white",
                 activebackground=border_color,
                 activeforeground=fg_color,
@@ -121,12 +125,16 @@ class CalculatorApp:
                 self.expression.set(current_expression + "0.")
             elif "." not in current_expression.split(" ")[-1]:
                 self.expression.set(current_expression + ".")
+            else:
+                self.expression.set(current_expression + ".")
         elif symbol == "a/b":
             self.convert_to_fraction()
         else:
             current_expression = self.expression.get()
             self.expression.set(current_expression + str(symbol))
             self.expression.set(current_expression + str(symbol))
+        if symbol not in {"=", "a/b"}:
+            self.history.append(self.expression.get())
 
     def check_syntax(self):
         dfa = {
@@ -136,6 +144,7 @@ class CalculatorApp:
                 "+": "operator",
                 "-": "operator",
                 "x": "operator",
+                "*": "operator",
                 "/": "operator",
                 "^": "exponent",
                 ")": "close_paren",
@@ -157,6 +166,7 @@ class CalculatorApp:
                 "+": "operator",
                 "-": "operator",
                 "x": "operator",
+                "*": "operator",
                 "/": "operator",
                 "^": "operator",
                 ")": "close_paren",
@@ -214,11 +224,17 @@ class CalculatorApp:
 
         try:
             if self.check_syntax():
-                modified_expression = self.expression.get().replace("^", "**")
+                original_expression = self.expression.get()
+                modified_expression = original_expression.replace("^", "**")
                 modified_expression = modified_expression.replace("x", "*")
 
+                modified_expression = re.sub(r"\b0+(\d+)", r"\1", modified_expression)
+
                 result = str(eval(modified_expression))
+                entry = (original_expression, result)
+                self.runtime_history.append(entry)
                 self.expression.set(result)
+
             else:
                 self.expression.set("Syntax Error")
         except Exception as e:
@@ -240,10 +256,68 @@ class CalculatorApp:
                 fraction_result = Fraction(decimal_result).limit_denominator()
                 self.expression.set(fraction_result)
 
+            entry = (f"{current_result}", str(self.expression.get()))
+            self.runtime_history.append(entry)
+
             self.to_fraction = not self.to_fraction
 
         except ValueError:
             self.expression.set("Error")
+
+    def display_history(self):
+        if self.history_window_open:
+            self.history_window.destroy()
+            self.history_window_open = False
+        else:
+            self.history_window = tk.Toplevel(self.master)
+            self.history_window.title("History")
+
+            for entry in self.runtime_history:
+                original_expression, result = entry
+                label_text = f"{original_expression} = {result}"
+                label = tk.Label(
+                    self.history_window, text=label_text, font=("Helvetica", 12)
+                )
+                label.pack(pady=5)
+
+            clear_button = tk.Button(
+                self.history_window,
+                text="Clear History",
+                command=self.clear_history,
+                padx=10,
+                pady=5,
+                font=("Helvetica", 12),
+                bg="#A7A7A7",
+                fg="white",
+                activebackground="#2C2C2C",
+                activeforeground="white",
+                borderwidth=0,
+                relief="ridge",
+                bd=0,
+            )
+            clear_button.pack(pady=10)
+
+            self.history_window_open = True
+
+    def clear_history(self):
+        self.runtime_history = []
+        self.history_window.destroy()
+        self.history_window_open = False
+
+    def handle_keypress(self, event):
+        key = event.char
+        allowed_keys = "0123456789+-*/.^()=x"
+
+        if key in allowed_keys:
+            self.button_click(key)
+        elif event.keysym == "BackSpace":
+            self.button_click("←")
+        elif event.keysym == "Return":
+            self.button_click("=")
+        elif event.keysym == "Escape":
+            self.button_click("AC")
+        elif key.lower() == "h":
+            self.display_history()
 
 
 if __name__ == "__main__":
