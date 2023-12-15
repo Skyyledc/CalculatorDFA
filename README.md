@@ -4,6 +4,7 @@
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
+- -[Usage](#usage)
 
 ## Features
 
@@ -24,7 +25,7 @@
 
 Clone the repository:
 ```bash
-git clone https://github.com/your-username/calculator-app.git
+git clone https://github.com/Skyyledc/CalculatorDFA.git
 ```
 Navigate to the project directory:
 ```bash
@@ -35,13 +36,23 @@ Install dependencies:
 pip install tkintertable
 ```
 
-###Usage
+### Usage
 ```bash
 python Calculator.py
 ```
 
+### Screenshots
 
-
-
-DFA with end states being operand and close parenthesis
+- DFA with end states being operand and close parenthesis (DFA with No Negative integer support)
 ![image](https://github.com/Skyyledc/CalculatorDFA/assets/123300731/b34fa3a2-5779-4a3c-9d5d-e668854f4aad)
+
+- Calculator UI (iOS style calculator themed)
+
+- Basic History Screen
+
+### Sources Used
+[Tkinter library](https://docs.python.org/3/library/tkinter.html)https://docs.python.org/3/library/tkinter.html
+[Fractions module](https://docs.python.org/3/library/fractions.html)https://docs.python.org/3/library/fractions.html
+[Python Standard Library](https://docs.python.org/3/library/)https://docs.python.org/3/library/
+
+
