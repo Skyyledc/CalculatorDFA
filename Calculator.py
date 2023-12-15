@@ -186,6 +186,9 @@ class CalculatorApp:
             return symbol
 
     def evaluate_expression(self):
+        if not self.expression.get():
+            return
+
         try:
             if self.check_syntax():
                 modified_expression = self.expression.get().replace("^", "**")
@@ -199,6 +202,9 @@ class CalculatorApp:
             self.expression.set("Error")
 
     def convert_to_fraction(self):
+        if not self.expression.get():
+            return
+
         try:
             current_result = self.expression.get()
 
