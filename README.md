@@ -46,13 +46,13 @@ python Calculator.py
 ## Screenshots
 
 - DFA with end states being operand and close parenthesis (DFA with No Negative integer support)
-![image](https://github.com/Skyyledc/CalculatorDFA/assets/123300731/b34fa3a2-5779-4a3c-9d5d-e668854f4aad)
+  -  ![image](https://github.com/Skyyledc/CalculatorDFA/assets/123300731/b34fa3a2-5779-4a3c-9d5d-e668854f4aad)
 
 - Calculator UI (iOS style calculator themed)
-![image](https://github.com/Skyyledc/CalculatorDFA/assets/123300731/269756cb-4f3f-4765-8dbb-bcefc4c3be40)
+  - ![image](https://github.com/Skyyledc/CalculatorDFA/assets/123300731/269756cb-4f3f-4765-8dbb-bcefc4c3be40)
 
 - Basic History Screen
-![image](https://github.com/Skyyledc/CalculatorDFA/assets/123300731/f0705141-e040-461b-b63b-261bd3b0a71c)
+  - ![image](https://github.com/Skyyledc/CalculatorDFA/assets/123300731/f0705141-e040-461b-b63b-261bd3b0a71c)
 
 ## Acknowledgements
 - [Tkinter library](https://docs.python.org/3/library/tkinter.html)
